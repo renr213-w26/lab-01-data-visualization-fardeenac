@@ -90,6 +90,9 @@ ggplot(midwest, aes(x = popdensity)) +
 
 ``` 
 The data analysis from question 1 and 2 shows that the pop densisty of counties of midwest area is mostly around 0 to 15,000 with median below 6,000. However, it shows there are possible outlier of counties showing some counties with better reesources leading to higher population densisty and as population densisty depend on lot of facots among counties there are many outlies but the data is mostly pushed toward left. Hence, from the data I feel median does not provide much information with having so many outliers and mean would be benefical.
+
+Cook county is one of the outlier with highest pupulation density and far from the median.
+
 ### Question 3
 
 ### Question 4

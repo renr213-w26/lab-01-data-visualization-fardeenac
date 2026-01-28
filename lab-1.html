@@ -219,9 +219,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>I would say Binwidth = 1000 is a great option as It included most of the data in a one side and in a ogranised pattern as if you want to check certain numbe of pupulation densitity and how many are there in midwest 1000 would be easier than 10,000 or 100 whereas 100000 does not show any represenation of data based on the quanity variable.</p>
+<p>I would say Binwidth = 1000 is a great option as It included most of the data in a one side and in a ogranised pattern as if you want to check certain number of pupulation densitity and how many are there in midwest 1000 would be easier than 10,000 or 100 whereas 100000 does not show any represenation of data based on the quanity variable. It shows the shape of the diagram and the skewness of the data. it aslo shows poetential outliers so showing better describing the analysis.</p>
 <section id="question-2" class="level3">
 <h3 class="anchored" data-anchor-id="question-2">Question 2</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>midwest</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 437 × 28
+     PID county  state  area poptotal popdensity popwhite popblack popamerindian
+   &lt;int&gt; &lt;chr&gt;   &lt;chr&gt; &lt;dbl&gt;    &lt;int&gt;      &lt;dbl&gt;    &lt;int&gt;    &lt;int&gt;         &lt;int&gt;
+ 1   561 ADAMS   IL    0.052    66090      1271.    63917     1702            98
+ 2   562 ALEXAN… IL    0.014    10626       759      7054     3496            19
+ 3   563 BOND    IL    0.022    14991       681.    14477      429            35
+ 4   564 BOONE   IL    0.017    30806      1812.    29344      127            46
+ 5   565 BROWN   IL    0.018     5836       324.     5264      547            14
+ 6   566 BUREAU  IL    0.05     35688       714.    35157       50            65
+ 7   567 CALHOUN IL    0.017     5322       313.     5298        1             8
+ 8   568 CARROLL IL    0.027    16805       622.    16519      111            30
+ 9   569 CASS    IL    0.024    13437       560.    13384       16             8
+10   570 CHAMPA… IL    0.058   173025      2983.   146506    16559           331
+# ℹ 427 more rows
+# ℹ 19 more variables: popasian &lt;int&gt;, popother &lt;int&gt;, percwhite &lt;dbl&gt;,
+#   percblack &lt;dbl&gt;, percamerindan &lt;dbl&gt;, percasian &lt;dbl&gt;, percother &lt;dbl&gt;,
+#   popadults &lt;int&gt;, perchsd &lt;dbl&gt;, percollege &lt;dbl&gt;, percprof &lt;dbl&gt;,
+#   poppovertyknown &lt;int&gt;, percpovertyknown &lt;dbl&gt;, percbelowpoverty &lt;dbl&gt;,
+#   percchildbelowpovert &lt;dbl&gt;, percadultpoverty &lt;dbl&gt;,
+#   percelderlypoverty &lt;dbl&gt;, inmetro &lt;int&gt;, category &lt;chr&gt;</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(midwest, <span class="fu">aes</span>(<span class="at">x =</span> popdensity)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution of Population Density of Midwest Counties"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">""</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Population Density (persons per unit area)</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="st">    "</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="co">#got it from google for better look for scatterplot diagram</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lab-1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The data analysis from question 1 and 2 shows that the pop densisty of counties of midwest area is mostly around 0 to 15,000 with median below 6,000. However, it shows there are possible outlier of counties showing some counties with better reesources leading to higher population densisty and as population densisty depend on lot of facots among counties there are many outlies but the data is mostly pushed toward left. Hence, from the data I feel median does not provide much information with having so many outliers and mean would be benefical.</p>
+<p>Cook county is one of the outlier with highest pupulation density and far from the median.</p>
 </section>
 <section id="question-3" class="level3">
 <h3 class="anchored" data-anchor-id="question-3">Question 3</h3>
