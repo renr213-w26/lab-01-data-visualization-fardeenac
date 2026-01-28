@@ -13,6 +13,8 @@ editor: visual
 
 
 library(tidyverse)
+install.packages("ggthemes")
+library(ggthemes)
 midwest
 
 ```
@@ -77,7 +79,7 @@ I would say Binwidth = 1000 is a great option as It included most of the data in
 
 ### Question 2
 ```{r}
-midwest
+
 ggplot(midwest, aes(x = popdensity)) +
   geom_boxplot() +
   labs(
@@ -95,7 +97,39 @@ Cook county is one of the outlier with highest pupulation density and far from t
 
 ### Question 3
 
+
+```{r}
+
+
+
+ggplot(midwest, aes(x = percollege, y = percbelowpoverty))+
+  geom_point(aes(color = state, shape= state ))+
+  geom_smooth()+
+  labs(
+    title = 'College Education and Poverty Across Midwest Counties (2000)',
+    subtitle = "County-level comparison using U.S. Census data, colored and shaped by state",
+    x= "Percent of Adults with a College Degree",
+    y= "Percent of Population Below the Poverty Line",
+    color = "State",
+    shape= "State"
+  )+
+  scale_x_continuous(labels = scales::label_percent(scale = 1)) +
+  scale_y_continuous(labels = scales::label_percent(scale = 1))+  #scale x make its look better as it includes percentage sign. 
+
+  scale_color_colorblind()+
+  theme_minimal() #once again it makes it look better
+  
+ 
+
+  
+  
+```
+#According it to the scatter plot - Percent of Adulls with a college degree and population below poverty has somewhat a negative relationship in midwestern states. It indicates that with a rise in college degree among adult the population below poverty line falls. It shows a reationship not a causation. But looking into best with line, the co-relation is strong hence a full conclusion cannot be made. 
+
+#One of the outlier is JACKSON county. with high pupulation of college degree but still a comparative high poverty level. 
+
 ### Question 4
+
 
 ### Question 5
 
