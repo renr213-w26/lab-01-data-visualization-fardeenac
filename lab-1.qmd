@@ -129,9 +129,71 @@ ggplot(midwest, aes(x = percollege, y = percbelowpoverty))+
 #One of the outlier is JACKSON county. with high pupulation of college degree but still a comparative high poverty level. 
 
 ### Question 4
+```{r}
 
 
+
+ggplot(midwest, aes(x = percollege, y = percbelowpoverty))+
+  geom_point(aes(color = state, shape= state ))+
+  geom_smooth( se = FALSE)+ #I did not use linear method because i feel it should be exponential explaining the best fit line better and i feel it does not work for linear level and showing somewhat relationship with the linear
+  labs(
+    title = 'College Education and Poverty Across Midwest Counties (2000)',
+    subtitle = "County-level comparison using U.S. Census data, colored and shaped by state",
+    x= "Percent of Adults with a College Degree",
+    y= "Percent of Population Below the Poverty Line",
+    color = "State",
+    shape= "State"
+  )+
+  scale_x_continuous(labels = scales::label_percent(scale = 1)) +
+  scale_y_continuous(labels = scales::label_percent(scale = 1))+  #scale x make its look better as it includes percentage sign. +
+  facet_wrap(~state)+
+
+  scale_color_colorblind()+
+  theme_minimal() #once again it makes it look better
+  
+ 
+
+  
+  
+```
+What I prefer among question 3 and question depends on what i am trying to get from the data. IF i want to compare solely among state than I  would choose question 4 but if i want to see the relationship in general i would prefer question 3. However, the graph in question 4 looks more organised to me.
 ### Question 5
+```{r}
+ggplot(midwest, aes(x= state, y= area))+
+  geom_boxplot()+
+  labs(
+    title = "Distribution of County Area Sizes Across Midwest States",
+    subtitle = "Side-by-side boxplots showing variability in county land area by state",
+    x = "State",
+    y= "County Area"
+  )+
+  scale_x_discrete(
+    labels = c(
+      IL = "Illinois",
+      IN = "Indiana",
+      MI = "Michigan",
+      OH = "Ohio",
+      WI = "Wisconsin"
+    )
+  )+
+  
+  #i wanted to put full name of states in this plot to make the graph look easier and a small kid can understand it hence I asked chatgpt how can I put state names for x axis and it give me the coe for scale_x_discrete. It helped e me know more about the fuction as well
+  
+  scale_y_continuous(
+    limit = c(0, 0.12),
+   
+  )+
+  #I use this fucntion taking help from chat gpt to show the lable for the higes areaof country on y axis, earlier it was not showing. But now it is showing making the graph analysis more easier for anyone.
+  theme_minimal()
+
+```
+Michigan and wisconsisn has a higer variability in county sizes with higher interquartlie range and bigger whisker with several high area outliers in indicaitng a spread between high and low county area/
+
+For Indiana and Ohia, it shows the size of country more consistent with more compact data and small interquartile range 
+
+For Illinoise I feel it has moderate variability with bigger interquartile range then Indiana and Ohi. but smaller than michigan and wisconsin. Also compared to michigan and wisconsisn their outlier is withinin the largest county showning less extreme variability.
+
+Michigan has the single largest county. Name of the country is MARQUETTE.
 
 ### Question 6
 
