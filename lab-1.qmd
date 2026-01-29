@@ -82,7 +82,11 @@ I would say Binwidth = 1000 is a great option as It included most of the data in
 
 ### Question 2
 ```{r}
+<<<<<<< HEAD
 
+=======
+midwest
+>>>>>>> be2c1f1f04890e28c606174594edc9d5d311f2b6
 ggplot(midwest, aes(x = popdensity)) +
   geom_boxplot() +
   labs(
@@ -92,6 +96,7 @@ ggplot(midwest, aes(x = popdensity)) +
     "
   ) +
   theme_minimal() #got it from google for better look for scatterplot diagram
+<<<<<<< HEAD
 
 ``` 
 The data analysis from question 1 and 2 shows that the pop densisty of counties of midwest area is mostly around 0 to 15,000 with median below 6,000. However, it shows there are possible outlier of counties showing some counties with better reesources leading to higher population densisty and as population densisty depend on lot of facots among counties there are many outlies but the data is mostly pushed toward left. Hence, from the data I feel median does not provide much information with having so many outliers and mean would be benefical.
@@ -99,7 +104,11 @@ The data analysis from question 1 and 2 shows that the pop densisty of counties 
 Overall, the population densisty of midwest counties is has low variability withmost data pushed on left with may otliers and showing the vaiarbiliry with the average spread. 
 
 Cook county is one of the outlier with highest pupulation density and far from the median.
+=======
+>>>>>>> be2c1f1f04890e28c606174594edc9d5d311f2b6
 
+``` 
+The data analysis from question 1 and 2 shows that the pop densisty of counties of midwest area is mostly around 0 to 15,000 with median below 6,000. However, it shows there are possible outlier of counties showing some counties with better reesources leading to higher population densisty and as population densisty depend on lot of facots among counties there are many outlies but the data is mostly pushed toward left. Hence, from the data I feel median does not provide much information with having so many outliers and mean would be benefical.
 ### Question 3
 
 
