@@ -1,20 +1,23 @@
 ---
 title: "Lab 1 - Data visualization"
 format: html
-author: "Fardeen Chowdhuru"
+author: "Fardeen Chowdhuruy"
+student_id: 1773707
+
 editor: visual
 ---
 
 # Questions
 
 ## Part 1
-
+Data Setup
 ```{r}
 
 
 library(tidyverse)
 install.packages("ggthemes")
 library(ggthemes)
+library(scales)
 midwest
 
 ```
@@ -92,6 +95,8 @@ ggplot(midwest, aes(x = popdensity)) +
 
 ``` 
 The data analysis from question 1 and 2 shows that the pop densisty of counties of midwest area is mostly around 0 to 15,000 with median below 6,000. However, it shows there are possible outlier of counties showing some counties with better reesources leading to higher population densisty and as population densisty depend on lot of facots among counties there are many outlies but the data is mostly pushed toward left. Hence, from the data I feel median does not provide much information with having so many outliers and mean would be benefical.
+
+Overall, the population densisty of midwest counties is has low variability withmost data pushed on left with may otliers and showing the vaiarbiliry with the average spread. 
 
 Cook county is one of the outlier with highest pupulation density and far from the median.
 
@@ -251,7 +256,58 @@ MENOMINEE county in Wisconsin state is a outlier with way higher bewlo poverty r
 
 **Enough about the Midwest!**
 
-### Question 8
+```{r}
+nc_county <- read_csv("data/nc-county.csv")
 
+```
+<!-- county: Name of county. -->
+<!-- state_abb: State abbreviation (NC). -->
+<!-- state_name: State name (North Carolina). -->
+<!-- land_area_m2: Land area of county in square metres, based on the 2020 census. -->
+<!-- land_area_mi2: Land area of county in square miles, based on the 2020 census. -->
+<!-- population: Population of county, based on the 2020 census. -->
+<!-- density: Population density calculated as population divided by land area in square miles. -->
+### Question 8
+Before doing the coding i have guessed that popution density and land area has a negative relationship as population densitty should increase when land area decreases.
+
+```{r}
+
+ggplot(nc_county, aes(x = land_area_mi2, y= density))+
+  geom_point(colour= "darkblue")+
+  geom_smooth(se = FALSE, color = "darkred")+
+  labs(
+    title = "Relationship Between County Land Area (Square Miles) and Population Density",
+    subtitle = "Scatter plot of counties in North Carolina (2020 Census)",
+    x = "Land Area\n(square miles)",
+    y = "Population Density\n(people per square mile)"
+  )+
+  scale_x_continuous(limits = c(150,1000),
+  breaks = seq(100, 1000, by = 100))+ # i wanted my grid to be by 100 till 950 so that it is easy for viewrs to see the data and compare for this one I asked chatgpt to how to do that and it give my this conde and it is pretty understandable
+
+  scale_y_continuous(limits = c(0,2500))+
+  
+  theme_light() #i like the plot design using theme_light instead of theme_minimal
+  
+```
+After analysing the data and making a scatter plot, I would so if you just see the best fit line, my guess of a negative relationship was not correct. This is becase even though land area is increasing, most of the county's population density is not in decreasing strongly. insteade the population density remains at the similar level despite county with higher land area. Hence, it can be said that population of a country does not strongly depend on Land Area. 
 
 ### Question 9
+```{r}
+
+ggplot(nc_county, aes(x = land_area_m2, y= density))+
+  geom_point(colour= "darkgreen")+
+  geom_smooth(se = FALSE, color = "darkred")+
+  labs(
+    title = "Relationship Between County Land Area(square metres) and Population Density",
+    subtitle = "Scatter plot of counties in North Carolina (2020 Census)",
+    x = "Land Area\n(square metres)",
+    y = "Population Density\n(people per square mile)"
+  )+
+  scale_x_continuous(labels = label_number(scale = 1e-6, suffix = " Million")) +
+   scale_y_continuous(limits = c(0,2500))+
+
+  theme_light() #i like the plot design using theme_light instead of theme_minimal
+  
+
+```
+Relationship Status is same meaning populuation density (people per square mile)- is has no strong relation with Land Area of square metres. I feel the reason it is showing similar is because in the population density because the density does not only depend on the land area. The number of people living the county( population) matter which did not change in this analysis.
