@@ -234,13 +234,14 @@ ggplot(midwest, aes(x = percollege, y = percbelowpoverty, colour = percwhite))+
   facet_wrap(~state)+
    labs(
     title = "College Education and Poverty Across Midwest Counties",
-    subtitle = "Faceted by state; color indicates percent white population",
+    subtitle = "Faceted by state;\nColor indicates percent white population",
     x = "% college educated",
     y = "% below poverty line",
     color = "% white"
   )+
   theme_minimal()
  
+
 
 ```
 
