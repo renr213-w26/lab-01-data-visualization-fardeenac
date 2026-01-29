@@ -196,13 +196,61 @@ For Illinoise I feel it has moderate variability with bigger interquartile range
 Michigan has the single largest county. Name of the country is MARQUETTE.
 
 ### Question 6
+```{r}
+midwest <- midwest |>
+  mutate(metro = if_else(inmetro == 1, "Yes", "No"))
 
+ggplot(midwest, aes(x = state,fill = metro))+
+  geom_bar(position = "fill")+
+  scale_y_continuous(labels = scales::label_percent(scale=1))+
+  scale_x_discrete(
+    labels = c(
+      IL = "Illinois",
+      IN = "Indiana",
+      MI = "Michigan",
+      OH = "Ohio",
+      WI = "Wisconsin"
+    )
+  )+
+  labs(
+    title = "Proportion of Counties in Metropolitan Areas by State",
+    subtitle = "Segmented bar chart showing metro vs non-metro counties",
+    x = "State",
+    y = "Proportion of Counties",
+    fill = "Counties Metropolitan Area"
+  )+
+  
+  theme_minimal()
+
+
+```
+Illinois has slightly more than 25% in metropolital area which is similar with Michigan and wisconsin. 
+However, Indiana has slight her than 37.5% counties in metropolitan area. Ohio has the higes counties in metorpolitan area according to the data with more than 40% but below 50%. 
 ### Question 7
+```{r}
+
+ggplot(midwest, aes(x = percollege, y = percbelowpoverty, colour = percwhite))+
+  geom_point(size= 2, alpha = 0.5)+
+  facet_wrap(~state)+
+   labs(
+    title = "College Education and Poverty Across Midwest Counties",
+    subtitle = "Faceted by state; color indicates percent white population",
+    x = "% college educated",
+    y = "% below poverty line",
+    color = "% white"
+  )+
+  theme_minimal()
+ 
+
+```
+
+MENOMINEE county in Wisconsin state is a outlier with way higher bewlo poverty rate of 48.6911% compared to other counties. In this county 10.7% of thew population are white, but the most of the people in the county are from American Indians race with 89%. Whereas the country does not have any black population but there are 5% of other races. This chose the county majority population is american indians whereas whites and other races are minority. 
 
 ## Part 2
 
 **Enough about the Midwest!**
 
 ### Question 8
+
 
 ### Question 9
